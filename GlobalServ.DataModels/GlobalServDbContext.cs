@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GlobalServ.DataModels.Models;
 using GlobalServ.Common.Enum;
+using Microsoft.Extensions.Configuration;
 
 namespace GlobalServ.DataModels
 {
@@ -17,6 +18,8 @@ namespace GlobalServ.DataModels
         {
 
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GlobarServ;Trusted_Connection=True");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RoleModel>(entity =>

@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GlobalServ.Core\GlobalServ.Core.csproj" />
     <ProjectReference Include="..\GlobalServ.DataAccessLayer\GlobalServ.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\GlobalServ.DomainModels\GlobalServ.DomainModels.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,49 +11,49 @@ namespace GlobalServ.BusinessLogic.Implementations
 {
     public class BaseBusinessService<T> : IBaseBusinessService<T> where T : class
     {
-        private readonly IGenericRepository<T> _genericRepository;
+        protected readonly IGenericRepository<T> GenericRepository;
         public BaseBusinessService(IGenericRepository<T> generic)
         {
-            _genericRepository = generic;
+            GenericRepository = generic;
         }
         public void Add(T entity)
         {
-            _genericRepository.Add(entity);
-            _genericRepository.Save();
+            GenericRepository.Add(entity);
+            GenericRepository.Save();
         }
 
         public void Delete(T entity)
         {
-           _genericRepository.Delete(entity);
-            _genericRepository.Save();
+           GenericRepository.Delete(entity);
+            GenericRepository.Save();
         }
 
         public IList<T> Get(Expression<Func<T, bool>> expression, bool asNoTracking = false,  params Expression<Func<T, object>>[] include)
         {
-            return _genericRepository.Get(expression, asNoTracking, include);
+            return GenericRepository.Get(expression, asNoTracking, include);
         }
 
         public IList<T> GetAll()
         {
-            return _genericRepository.GetAll();
+            return GenericRepository.GetAll();
         }
 
         public T? GetById<IdType>(IdType id)
         {
-            return _genericRepository.GetById(id);
+            return GenericRepository.GetById(id);
         }
 
 
         public void Update(T entity)
         {
-            _genericRepository.Update(entity);
-            _genericRepository.Save();
+            GenericRepository.Update(entity);
+            GenericRepository.Save();
         }
 
         public void UpdateProperty(string tableName, string entityId, string property, string propetyValue)
         {
-            _genericRepository.UpdateProperty(tableName, entityId, property, propetyValue);
-            _genericRepository.Save();
+            GenericRepository.UpdateProperty(tableName, entityId, property, propetyValue);
+            GenericRepository.Save();
         }
     }
 }
